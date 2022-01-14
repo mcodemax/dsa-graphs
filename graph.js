@@ -43,7 +43,21 @@ class Graph {
   }
 
   // this function returns an array of Node values using DFS
-  depthFirstSearch(start) {}
+  depthFirstSearch(start) {//practice on own
+  	//track nodes visited
+    const visited = new Set();
+    const vals = [];
+    
+    function traverse(vertex){
+    	if(!vertex) return null;
+      
+      visited.add(vertex);
+      vals.push(vertex.value);
+      
+      vertex.adjacent.forEach(neighbor => {
+      	if(!visited.has(neighbor)) traverse(neighbor);
+      });
+    }
 
   // this function returns an array of Node values using BFS
   breadthFirstSearch(start) {}
