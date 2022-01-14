@@ -60,7 +60,28 @@ class Graph {
     }
 
   // this function returns an array of Node values using BFS
-  breadthFirstSearch(start) {}
+  breadthFirstSearch(start) {
+  	const visited = new Set();
+    const data = [];
+    const queue = [start];
+    
+    visited.add(start)
+    //when at a node visit all its adjacents(pop onto a stack)
+    while(queue.length > 0){
+    	const currNode = queue.shift();
+      //visited.add(currNode); //this doesn't belong HERE see comment in for of loop!!
+    	data.push(currNode.value);
+      
+      for(const neighbor of currNode.adjacent){
+      	if(!visited.has(neighbor)){
+        	queue.push(neighbor);
+          visited.add(neighbor);//needed here otherwise you're gonna be visited a node more than once!!!
+        }
+      }
+    }
+    
+    return data;
+  }
 }
 
 module.exports = {Graph, Node}
