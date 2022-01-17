@@ -59,6 +59,10 @@ class Graph {
       });
     }
 
+    traverse(start);
+    return vals;
+  }
+
   // this function returns an array of Node values using BFS
   breadthFirstSearch(start) {
   	const visited = new Set();
